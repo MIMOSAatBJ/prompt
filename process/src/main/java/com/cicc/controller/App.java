@@ -1,7 +1,6 @@
 package com.cicc.controller;
 
 import com.cicc.common.base.BaseController;
-import com.cicc.common.mapper.ext.DrugExtMapper;
 import com.cicc.common.service.DrugService;
 import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
@@ -21,13 +20,12 @@ public class App extends BaseController {
 
     @Autowired
     private DrugService drugService;
-    @Autowired
-    private DrugExtMapper extMapper;
+
 
     @RequestMapping("/hi")
     public String hello(HttpServletRequest request, HttpServletResponse response, @RequestParam(name = "id") Integer id) {
         Gson g = new Gson();
         LOGGER.info("test");
-        return new Gson().toJson(extMapper.extSelect(id));
+        return  g.toJson(drugService.findById(id));
     }
 }

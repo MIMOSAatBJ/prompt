@@ -15,8 +15,8 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <spring-version>4.3.3.RELEASE</spring-version>
-        <jackson-version>2.8.3</jackson-version>
+        <spring-version>4.3.12.RELEASE</spring-version>
+        <jackson-version>2.9.2</jackson-version>
         <shiro-version>1.3.2</shiro-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -178,6 +178,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.26</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.7</version>
         </dependency>
     </dependencies>
 </project>
