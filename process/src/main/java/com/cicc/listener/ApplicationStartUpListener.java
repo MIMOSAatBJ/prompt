@@ -1,5 +1,7 @@
 package com.cicc.listener;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -9,11 +11,11 @@ import javax.servlet.ServletContextListener;
 /**
  * 1）实现ApplicationListener重写onApplicationEvent方法
  * 2)实现ServletContextListener
- * @author killer
  *
+ * @author killer
  */
 public class ApplicationStartUpListener implements ServletContextListener {
-//    private Logger logger=Logger.getLogger(getClass());
+    private Logger logger = LogManager.getLogger(getClass());
 
 //	public void onApplicationEvent(ContextRefreshedEvent event) {
 //		ApplicationContext context = event.getApplicationContext();
@@ -27,6 +29,7 @@ public class ApplicationStartUpListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         ApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(sce.getServletContext());
         if (context.getParent() == null) {
+            logger.info("contextInitialized,you can put you init code here");
         }
 
     }

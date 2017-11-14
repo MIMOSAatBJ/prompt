@@ -5,10 +5,63 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context-4.3.xsd
-   ">
+	http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+    <context:property-placeholder location="classpath:${spring.profiles.active:dev}/jdbc.properties"/>
     <context:annotation-config/>
-    <context:component-scan base-package="com.cicc" />
+    <context:component-scan base-package="com.cicc"/>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="filters" value="stat"/>
+        <property name="maxActive" value="100"/>
+        <property name="initialSize" value="10"/>
+        <property name="maxWait" value="60000"/>
+        <property name="minIdle" value="0"/>
+        <property name="timeBetweenEvictionRunsMillis" value="3000"/>
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+        <property name="validationQuery" value="SELECT 1 from dual"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="true"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="removeAbandoned" value="true"/>
+        <property name="removeAbandonedTimeout" value="180"/>
+        <property name="connectionProperties" value="druid.stat.slowSqlMillis=3000"/>
+    </bean>
+
+    <bean id="sqlSessionFactory" name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--mapperLocations：它表示我们的Mapper文件存放的位置，
+        当我们的Mapper文件跟对应的Mapper接口处于同一位置的时候可以不用指定该属性的值。-->
+        <property name="mapperLocations">
+            <list>
+                <value>classpath*:mapper/*.xml</value>
+                <value>classpath*:mapper/ext/*.xml</value>
+            </list>
+        </property>
+        <!--
+        configLocation：用于指定Mybatis的配置文件位置。如果指定了该属性，
+        那么会以该配置文件的内容作为配置信息构建对应的SqlSessionFactoryBuilder，
+        但是后续属性指定的内容会覆盖该配置文件里面指定的对应内容。
+        <property name="configLocation" value="" />
+        -->
+        <!--typeAliasesPackage：它一般对应我们的实体类所在的包，
+        这个时候会自动取对应包中不包括包名的简单类名作为包括包名的别名。
+        多个package之间可以用逗号或者分号等来进行分隔。
+         <property name="typeAliasesPackage" value="cc.fcsp.beans"/>
+        -->
+
+        <!-- plugins：数组类型，用来指定Mybatis的Interceptor。
+        <property name="plugins" value=""/>-->
+    </bean>
+
+    <!--  这样MapperScannerConfigurer就会扫描指定基包下面的所有接口，并把它们注册为一个个MapperFactoryBean对象。-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.cicc.common.mapper"/>
+    </bean>
 
 </beans>

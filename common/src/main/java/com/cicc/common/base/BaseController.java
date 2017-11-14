@@ -1,4 +1,4 @@
-package com.cicc.common;
+package com.cicc.common.base;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

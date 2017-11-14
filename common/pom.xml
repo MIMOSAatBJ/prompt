@@ -11,7 +11,10 @@
     <artifactId>common</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
+
+
     <build>
         <finalName>common</finalName>
+        <outputDirectory>/target</outputDirectory>
     </build>
 </project>

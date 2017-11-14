@@ -13,8 +13,9 @@
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
     <context:component-scan base-package="com.cicc.controller" use-default-filters="false">
-        <context:include-filter type="assignable" expression="com.cicc.common.BaseController"/>
+        <context:include-filter type="assignable" expression="com.cicc.common.base.BaseController"/>
     </context:component-scan>
+
     <mvc:annotation-driven>
         <mvc:message-converters>
             <bean

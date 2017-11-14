@@ -1,4 +1,4 @@
-package com.cicc.common;
+package com.cicc.common.base;
 
 
 import com.google.gson.Gson;

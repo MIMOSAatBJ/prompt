@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cicc.common.mapper.DrugMapper" >
+  <resultMap id="BaseResultMap" type="com.cicc.common.bean.Drug" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="byname" property="byname" jdbcType="VARCHAR" />
+    <result column="eng_name" property="engName" jdbcType="VARCHAR" />
+    <result column="ratify_code" property="ratifyCode" jdbcType="VARCHAR" />
+    <result column="drug_category_id" property="drugCategoryId" jdbcType="INTEGER" />
+    <result column="safety_category" property="safetyCategory" jdbcType="INTEGER" />
+    <result column="produce_company_id" property="produceCompanyId" jdbcType="INTEGER" />
+    <result column="dosage_form" property="dosageForm" jdbcType="INTEGER" />
+    <result column="spec" property="spec" jdbcType="VARCHAR" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="cost_unit_id" property="costUnitId" jdbcType="INTEGER" />
+    <result column="unit_group_id" property="unitGroupId" jdbcType="INTEGER" />
+    <result column="storage_room_unit_id" property="storageRoomUnitId" jdbcType="INTEGER" />
+    <result column="purchase_unit_id" property="purchaseUnitId" jdbcType="INTEGER" />
+    <result column="sale_unit_id" property="saleUnitId" jdbcType="INTEGER" />
+    <result column="dosage" property="dosage" jdbcType="VARCHAR" />
+    <result column="element" property="element" jdbcType="VARCHAR" />
+    <result column="function" property="function" jdbcType="VARCHAR" />
+    <result column="taboo" property="taboo" jdbcType="VARCHAR" />
+    <result column="bad_reaction" property="badReaction" jdbcType="VARCHAR" />
+    <result column="attention" property="attention" jdbcType="VARCHAR" />
+    <result column="mutex" property="mutex" jdbcType="VARCHAR" />
+    <result column="chem_element" property="chemElement" jdbcType="VARCHAR" />
+    <result column="toxicology" property="toxicology" jdbcType="VARCHAR" />
+    <result column="enable_date" property="enableDate" jdbcType="TIMESTAMP" />
+    <result column="disable_date" property="disableDate" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="last_updated_by" property="lastUpdatedBy" jdbcType="VARCHAR" />
+    <result column="last_updated_date" property="lastUpdatedDate" jdbcType="TIMESTAMP" />
+    <result column="letter_py" property="letterPy" jdbcType="VARCHAR" />
+    <result column="letter_wb" property="letterWb" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="bar_code" property="barCode" jdbcType="VARCHAR" />
+    <result column="drug_type" property="drugType" jdbcType="INTEGER" />
+    <result column="photo_url" property="photoUrl" jdbcType="VARCHAR" />
+    <result column="drug_id" property="drugId" jdbcType="VARCHAR" />
+    <result column="ori_uuid" property="oriUuid" jdbcType="VARCHAR" />
+    <result column="drug_ratio" property="drugRatio" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, code, byname, eng_name, ratify_code, drug_category_id, safety_category, 
+    produce_company_id, dosage_form, spec, unit, cost_unit_id, unit_group_id, storage_room_unit_id, 
+    purchase_unit_id, sale_unit_id, dosage, element, function, taboo, bad_reaction, attention, 
+    mutex, chem_element, toxicology, enable_date, disable_date, create_time, update_time, 
+    is_delete, description, last_updated_by, last_updated_date, letter_py, letter_wb, 
+    create_by, bar_code, drug_type, photo_url, drug_id, ori_uuid, drug_ratio
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from drug
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from drug
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cicc.common.bean.Drug" >
+    insert into drug (id, name, code, 
+      byname, eng_name, ratify_code, 
+      drug_category_id, safety_category, produce_company_id, 
+      dosage_form, spec, unit, 
+      cost_unit_id, unit_group_id, storage_room_unit_id, 
+      purchase_unit_id, sale_unit_id, dosage, 
+      element, function, taboo, 
+      bad_reaction, attention, mutex, 
+      chem_element, toxicology, enable_date, 
+      disable_date, create_time, update_time, 
+      is_delete, description, last_updated_by, 
+      last_updated_date, letter_py, letter_wb, 
+      create_by, bar_code, drug_type, 
+      photo_url, drug_id, ori_uuid, 
+      drug_ratio)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{byname,jdbcType=VARCHAR}, #{engName,jdbcType=VARCHAR}, #{ratifyCode,jdbcType=VARCHAR}, 
+      #{drugCategoryId,jdbcType=INTEGER}, #{safetyCategory,jdbcType=INTEGER}, #{produceCompanyId,jdbcType=INTEGER}, 
+      #{dosageForm,jdbcType=INTEGER}, #{spec,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, 
+      #{costUnitId,jdbcType=INTEGER}, #{unitGroupId,jdbcType=INTEGER}, #{storageRoomUnitId,jdbcType=INTEGER}, 
+      #{purchaseUnitId,jdbcType=INTEGER}, #{saleUnitId,jdbcType=INTEGER}, #{dosage,jdbcType=VARCHAR}, 
+      #{element,jdbcType=VARCHAR}, #{function,jdbcType=VARCHAR}, #{taboo,jdbcType=VARCHAR}, 
+      #{badReaction,jdbcType=VARCHAR}, #{attention,jdbcType=VARCHAR}, #{mutex,jdbcType=VARCHAR}, 
+      #{chemElement,jdbcType=VARCHAR}, #{toxicology,jdbcType=VARCHAR}, #{enableDate,jdbcType=TIMESTAMP}, 
+      #{disableDate,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{lastUpdatedBy,jdbcType=VARCHAR}, 
+      #{lastUpdatedDate,jdbcType=TIMESTAMP}, #{letterPy,jdbcType=VARCHAR}, #{letterWb,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{barCode,jdbcType=VARCHAR}, #{drugType,jdbcType=INTEGER}, 
+      #{photoUrl,jdbcType=VARCHAR}, #{drugId,jdbcType=VARCHAR}, #{oriUuid,jdbcType=VARCHAR}, 
+      #{drugRatio,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cicc.common.bean.Drug" >
+    insert into drug
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="byname != null" >
+        byname,
+      </if>
+      <if test="engName != null" >
+        eng_name,
+      </if>
+      <if test="ratifyCode != null" >
+        ratify_code,
+      </if>
+      <if test="drugCategoryId != null" >
+        drug_category_id,
+      </if>
+      <if test="safetyCategory != null" >
+        safety_category,
+      </if>
+      <if test="produceCompanyId != null" >
+        produce_company_id,
+      </if>
+      <if test="dosageForm != null" >
+        dosage_form,
+      </if>
+      <if test="spec != null" >
+        spec,
+      </if>
+      <if test="unit != null" >
+        unit,
+      </if>
+      <if test="costUnitId != null" >
+        cost_unit_id,
+      </if>
+      <if test="unitGroupId != null" >
+        unit_group_id,
+      </if>
+      <if test="storageRoomUnitId != null" >
+        storage_room_unit_id,
+      </if>
+      <if test="purchaseUnitId != null" >
+        purchase_unit_id,
+      </if>
+      <if test="saleUnitId != null" >
+        sale_unit_id,
+      </if>
+      <if test="dosage != null" >
+        dosage,
+      </if>
+      <if test="element != null" >
+        element,
+      </if>
+      <if test="function != null" >
+        function,
+      </if>
+      <if test="taboo != null" >
+        taboo,
+      </if>
+      <if test="badReaction != null" >
+        bad_reaction,
+      </if>
+      <if test="attention != null" >
+        attention,
+      </if>
+      <if test="mutex != null" >
+        mutex,
+      </if>
+      <if test="chemElement != null" >
+        chem_element,
+      </if>
+      <if test="toxicology != null" >
+        toxicology,
+      </if>
+      <if test="enableDate != null" >
+        enable_date,
+      </if>
+      <if test="disableDate != null" >
+        disable_date,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="lastUpdatedBy != null" >
+        last_updated_by,
+      </if>
+      <if test="lastUpdatedDate != null" >
+        last_updated_date,
+      </if>
+      <if test="letterPy != null" >
+        letter_py,
+      </if>
+      <if test="letterWb != null" >
+        letter_wb,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="barCode != null" >
+        bar_code,
+      </if>
+      <if test="drugType != null" >
+        drug_type,
+      </if>
+      <if test="photoUrl != null" >
+        photo_url,
+      </if>
+      <if test="drugId != null" >
+        drug_id,
+      </if>
+      <if test="oriUuid != null" >
+        ori_uuid,
+      </if>
+      <if test="drugRatio != null" >
+        drug_ratio,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="byname != null" >
+        #{byname,jdbcType=VARCHAR},
+      </if>
+      <if test="engName != null" >
+        #{engName,jdbcType=VARCHAR},
+      </if>
+      <if test="ratifyCode != null" >
+        #{ratifyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="drugCategoryId != null" >
+        #{drugCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="safetyCategory != null" >
+        #{safetyCategory,jdbcType=INTEGER},
+      </if>
+      <if test="produceCompanyId != null" >
+        #{produceCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="dosageForm != null" >
+        #{dosageForm,jdbcType=INTEGER},
+      </if>
+      <if test="spec != null" >
+        #{spec,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="costUnitId != null" >
+        #{costUnitId,jdbcType=INTEGER},
+      </if>
+      <if test="unitGroupId != null" >
+        #{unitGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="storageRoomUnitId != null" >
+        #{storageRoomUnitId,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseUnitId != null" >
+        #{purchaseUnitId,jdbcType=INTEGER},
+      </if>
+      <if test="saleUnitId != null" >
+        #{saleUnitId,jdbcType=INTEGER},
+      </if>
+      <if test="dosage != null" >
+        #{dosage,jdbcType=VARCHAR},
+      </if>
+      <if test="element != null" >
+        #{element,jdbcType=VARCHAR},
+      </if>
+      <if test="function != null" >
+        #{function,jdbcType=VARCHAR},
+      </if>
+      <if test="taboo != null" >
+        #{taboo,jdbcType=VARCHAR},
+      </if>
+      <if test="badReaction != null" >
+        #{badReaction,jdbcType=VARCHAR},
+      </if>
+      <if test="attention != null" >
+        #{attention,jdbcType=VARCHAR},
+      </if>
+      <if test="mutex != null" >
+        #{mutex,jdbcType=VARCHAR},
+      </if>
+      <if test="chemElement != null" >
+        #{chemElement,jdbcType=VARCHAR},
+      </if>
+      <if test="toxicology != null" >
+        #{toxicology,jdbcType=VARCHAR},
+      </if>
+      <if test="enableDate != null" >
+        #{enableDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disableDate != null" >
+        #{disableDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedBy != null" >
+        #{lastUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedDate != null" >
+        #{lastUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="letterPy != null" >
+        #{letterPy,jdbcType=VARCHAR},
+      </if>
+      <if test="letterWb != null" >
+        #{letterWb,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="barCode != null" >
+        #{barCode,jdbcType=VARCHAR},
+      </if>
+      <if test="drugType != null" >
+        #{drugType,jdbcType=INTEGER},
+      </if>
+      <if test="photoUrl != null" >
+        #{photoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="drugId != null" >
+        #{drugId,jdbcType=VARCHAR},
+      </if>
+      <if test="oriUuid != null" >
+        #{oriUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="drugRatio != null" >
+        #{drugRatio,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cicc.common.bean.Drug" >
+    update drug
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="byname != null" >
+        byname = #{byname,jdbcType=VARCHAR},
+      </if>
+      <if test="engName != null" >
+        eng_name = #{engName,jdbcType=VARCHAR},
+      </if>
+      <if test="ratifyCode != null" >
+        ratify_code = #{ratifyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="drugCategoryId != null" >
+        drug_category_id = #{drugCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="safetyCategory != null" >
+        safety_category = #{safetyCategory,jdbcType=INTEGER},
+      </if>
+      <if test="produceCompanyId != null" >
+        produce_company_id = #{produceCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="dosageForm != null" >
+        dosage_form = #{dosageForm,jdbcType=INTEGER},
+      </if>
+      <if test="spec != null" >
+        spec = #{spec,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="costUnitId != null" >
+        cost_unit_id = #{costUnitId,jdbcType=INTEGER},
+      </if>
+      <if test="unitGroupId != null" >
+        unit_group_id = #{unitGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="storageRoomUnitId != null" >
+        storage_room_unit_id = #{storageRoomUnitId,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseUnitId != null" >
+        purchase_unit_id = #{purchaseUnitId,jdbcType=INTEGER},
+      </if>
+      <if test="saleUnitId != null" >
+        sale_unit_id = #{saleUnitId,jdbcType=INTEGER},
+      </if>
+      <if test="dosage != null" >
+        dosage = #{dosage,jdbcType=VARCHAR},
+      </if>
+      <if test="element != null" >
+        element = #{element,jdbcType=VARCHAR},
+      </if>
+      <if test="function != null" >
+        function = #{function,jdbcType=VARCHAR},
+      </if>
+      <if test="taboo != null" >
+        taboo = #{taboo,jdbcType=VARCHAR},
+      </if>
+      <if test="badReaction != null" >
+        bad_reaction = #{badReaction,jdbcType=VARCHAR},
+      </if>
+      <if test="attention != null" >
+        attention = #{attention,jdbcType=VARCHAR},
+      </if>
+      <if test="mutex != null" >
+        mutex = #{mutex,jdbcType=VARCHAR},
+      </if>
+      <if test="chemElement != null" >
+        chem_element = #{chemElement,jdbcType=VARCHAR},
+      </if>
+      <if test="toxicology != null" >
+        toxicology = #{toxicology,jdbcType=VARCHAR},
+      </if>
+      <if test="enableDate != null" >
+        enable_date = #{enableDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disableDate != null" >
+        disable_date = #{disableDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedBy != null" >
+        last_updated_by = #{lastUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedDate != null" >
+        last_updated_date = #{lastUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="letterPy != null" >
+        letter_py = #{letterPy,jdbcType=VARCHAR},
+      </if>
+      <if test="letterWb != null" >
+        letter_wb = #{letterWb,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="barCode != null" >
+        bar_code = #{barCode,jdbcType=VARCHAR},
+      </if>
+      <if test="drugType != null" >
+        drug_type = #{drugType,jdbcType=INTEGER},
+      </if>
+      <if test="photoUrl != null" >
+        photo_url = #{photoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="drugId != null" >
+        drug_id = #{drugId,jdbcType=VARCHAR},
+      </if>
+      <if test="oriUuid != null" >
+        ori_uuid = #{oriUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="drugRatio != null" >
+        drug_ratio = #{drugRatio,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cicc.common.bean.Drug" >
+    update drug
+    set name = #{name,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      byname = #{byname,jdbcType=VARCHAR},
+      eng_name = #{engName,jdbcType=VARCHAR},
+      ratify_code = #{ratifyCode,jdbcType=VARCHAR},
+      drug_category_id = #{drugCategoryId,jdbcType=INTEGER},
+      safety_category = #{safetyCategory,jdbcType=INTEGER},
+      produce_company_id = #{produceCompanyId,jdbcType=INTEGER},
+      dosage_form = #{dosageForm,jdbcType=INTEGER},
+      spec = #{spec,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      cost_unit_id = #{costUnitId,jdbcType=INTEGER},
+      unit_group_id = #{unitGroupId,jdbcType=INTEGER},
+      storage_room_unit_id = #{storageRoomUnitId,jdbcType=INTEGER},
+      purchase_unit_id = #{purchaseUnitId,jdbcType=INTEGER},
+      sale_unit_id = #{saleUnitId,jdbcType=INTEGER},
+      dosage = #{dosage,jdbcType=VARCHAR},
+      element = #{element,jdbcType=VARCHAR},
+      function = #{function,jdbcType=VARCHAR},
+      taboo = #{taboo,jdbcType=VARCHAR},
+      bad_reaction = #{badReaction,jdbcType=VARCHAR},
+      attention = #{attention,jdbcType=VARCHAR},
+      mutex = #{mutex,jdbcType=VARCHAR},
+      chem_element = #{chemElement,jdbcType=VARCHAR},
+      toxicology = #{toxicology,jdbcType=VARCHAR},
+      enable_date = #{enableDate,jdbcType=TIMESTAMP},
+      disable_date = #{disableDate,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      last_updated_by = #{lastUpdatedBy,jdbcType=VARCHAR},
+      last_updated_date = #{lastUpdatedDate,jdbcType=TIMESTAMP},
+      letter_py = #{letterPy,jdbcType=VARCHAR},
+      letter_wb = #{letterWb,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      bar_code = #{barCode,jdbcType=VARCHAR},
+      drug_type = #{drugType,jdbcType=INTEGER},
+      photo_url = #{photoUrl,jdbcType=VARCHAR},
+      drug_id = #{drugId,jdbcType=VARCHAR},
+      ori_uuid = #{oriUuid,jdbcType=VARCHAR},
+      drug_ratio = #{drugRatio,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
