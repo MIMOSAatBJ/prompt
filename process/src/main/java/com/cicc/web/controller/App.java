@@ -1,8 +1,7 @@
-package com.cicc.controller;
+package com.cicc.web.controller;
 
 import com.cicc.common.base.BaseController;
 import com.cicc.common.service.DrugService;
-import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +22,7 @@ public class App extends BaseController {
 
 
     @RequestMapping("/hi")
-    public String hello(HttpServletRequest request, HttpServletResponse response, @RequestParam(name = "id") Integer id) {
-        Gson g = new Gson();
-        LOGGER.info("test");
-        return  g.toJson(drugService.findById(id));
+    public Object hello(HttpServletRequest request, HttpServletResponse response, @RequestParam(name = "id") Integer id) {
+        return  drugService.findById(id);
     }
 }

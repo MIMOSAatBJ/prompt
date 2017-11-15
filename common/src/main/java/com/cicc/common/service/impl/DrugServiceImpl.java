@@ -15,4 +15,9 @@ public class DrugServiceImpl implements DrugService {
     public Drug findById(Integer id) {
         return mapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public int insert(Drug drug) {
+        return  mapper.insertSelective(drug);
+    }
 }

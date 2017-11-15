@@ -4,10 +4,10 @@ package com.cicc.common.base;
 import com.google.gson.Gson;
 
 
-public class JsonAble {
-    protected static final Gson gson = new Gson();
+public interface JsonAble {
+    Gson gson = new Gson();
 
-    public String toString() {
+    default String toJson() {
         return gson.toJson(this);
     }
 }
