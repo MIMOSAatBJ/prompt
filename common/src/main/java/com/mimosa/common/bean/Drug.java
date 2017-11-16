@@ -1,4 +1,4 @@
-package com.cicc.common.bean;
+package com.mimosa.common.bean;
 
 import java.util.Date;
 

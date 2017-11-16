@@ -1,7 +1,7 @@
-package com.cicc.common.exception;
+package com.mimosa.common.exception;
 
-import com.cicc.common.base.Dict;
-import com.cicc.common.base.JsonAble;
+import com.mimosa.common.base.Dict;
+import com.mimosa.common.base.JsonAble;
 
 /**
  * 项目异常信息

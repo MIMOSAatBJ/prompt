@@ -1,6 +1,6 @@
-package com.cicc.common.base;
+package com.mimosa.common.base;
 
-import com.cicc.common.exception.GlobalException;
+import com.mimosa.common.exception.GlobalException;
 
 /**
  * 返回到前台的数据结构
@@ -48,6 +48,4 @@ public class BaseResponse {
         this.data = data;
     }
 
-    public static void main(String[] args) {
-    }
 }

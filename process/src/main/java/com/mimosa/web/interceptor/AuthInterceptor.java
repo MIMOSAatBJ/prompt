@@ -1,7 +1,7 @@
-package com.cicc.web.interceptor;
+package com.mimosa.web.interceptor;
 
-import com.cicc.common.base.Dict;
-import com.cicc.common.exception.GlobalException;
+import com.mimosa.common.base.Dict;
+import com.mimosa.common.exception.GlobalException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

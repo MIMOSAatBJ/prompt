@@ -11,7 +11,7 @@
         <param-value>classpath*:applicationContext.xml;</param-value>
     </context-param>
     <listener>
-        <listener-class>com.cicc.web.listener.ApplicationStartUpListener</listener-class>
+        <listener-class>com.mimosa.web.listener.ApplicationStartUpListener</listener-class>
     </listener>
     <servlet>
         <servlet-name>Dispatcher</servlet-name>

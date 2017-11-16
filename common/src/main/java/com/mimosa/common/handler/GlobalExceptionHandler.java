@@ -1,8 +1,8 @@
-package com.cicc.common.handler;
+package com.mimosa.common.handler;
 
-import com.cicc.common.base.BaseResponse;
-import com.cicc.common.base.Dict;
-import com.cicc.common.exception.GlobalException;
+import com.mimosa.common.base.BaseResponse;
+import com.mimosa.common.base.Dict;
+import com.mimosa.common.exception.GlobalException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.ExceptionHandler;

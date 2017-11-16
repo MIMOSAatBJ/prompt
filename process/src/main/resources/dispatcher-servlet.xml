@@ -16,8 +16,8 @@
 
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
-    <context:component-scan base-package="com.cicc.web.controller" use-default-filters="false">
-        <context:include-filter type="assignable" expression="com.cicc.common.base.BaseController"/>
+    <context:component-scan base-package="com.mimosa.web.controller" use-default-filters="false">
+        <context:include-filter type="assignable" expression="com.mimosa.common.base.BaseController"/>
     </context:component-scan>
     <aop:aspectj-autoproxy/>
     <mvc:annotation-driven>
@@ -40,7 +40,7 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <bean class="com.cicc.web.interceptor.AuthInterceptor"/>
+            <bean class="com.mimosa.web.interceptor.AuthInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 

@@ -1,6 +1,6 @@
-package com.cicc.common.mapper;
+package com.mimosa.common.mapper;
 
-import com.cicc.common.bean.Drug;
+import com.mimosa.common.bean.Drug;
 
 public interface DrugMapper {
     int deleteByPrimaryKey(Integer id);

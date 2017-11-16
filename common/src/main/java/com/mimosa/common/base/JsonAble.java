@@ -1,4 +1,4 @@
-package com.cicc.common.base;
+package com.mimosa.common.base;
 
 
 import com.google.gson.Gson;

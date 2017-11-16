@@ -1,7 +1,7 @@
-package com.cicc.web.controller;
+package com.mimosa.web.controller;
 
-import com.cicc.common.base.BaseController;
-import com.cicc.common.service.DrugService;
+import com.mimosa.common.base.BaseController;
+import com.mimosa.common.service.DrugService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
-package com.cicc.web.interceptor;
+package com.mimosa.web.interceptor;
 
-import com.cicc.common.base.BaseResponse;
-import com.cicc.common.base.Dict;
-import com.cicc.common.exception.GlobalException;
+import com.mimosa.common.base.BaseResponse;
+import com.mimosa.common.base.Dict;
+import com.mimosa.common.exception.GlobalException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class GlobalResponseHandler {
     private static final Logger LOGGER = LogManager.getLogger(GlobalResponseHandler.class);
 
-    @Around("execution(* com.cicc.web.controller.*.*(..)) ")
+    @Around("execution(* com.mimosa.web.controller.*.*(..)) ")
     protected Object wrapper(ProceedingJoinPoint joinPoint) {
         BaseResponse br;
         try {

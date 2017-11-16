@@ -1,6 +1,6 @@
-package com.cicc.common.service;
+package com.mimosa.common.service;
 
-import com.cicc.common.bean.Drug;
+import com.mimosa.common.bean.Drug;
 
 public interface DrugService {
     Drug findById(Integer id);

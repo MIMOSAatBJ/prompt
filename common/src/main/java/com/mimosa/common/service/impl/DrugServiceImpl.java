@@ -1,8 +1,8 @@
-package com.cicc.common.service.impl;
+package com.mimosa.common.service.impl;
 
-import com.cicc.common.bean.Drug;
-import com.cicc.common.mapper.DrugMapper;
-import com.cicc.common.service.DrugService;
+import com.mimosa.common.bean.Drug;
+import com.mimosa.common.mapper.DrugMapper;
+import com.mimosa.common.service.DrugService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

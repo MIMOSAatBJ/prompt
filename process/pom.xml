@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <artifactId>basic</artifactId>
-        <groupId>com.cicc</groupId>
+        <groupId>com.mimosa</groupId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../basic/pom.xml</relativePath>
     </parent>
@@ -12,7 +12,7 @@
     <version>1.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
-            <groupId>com.cicc</groupId>
+            <groupId>com.mimosa</groupId>
             <artifactId>common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
