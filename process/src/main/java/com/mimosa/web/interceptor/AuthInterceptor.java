@@ -26,7 +26,6 @@ public class AuthInterceptor implements HandlerInterceptor {
     @Value("${skip.enable}")
     private String skip;
 
-
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         if (Dict.Environment.dev.name().equalsIgnoreCase(env) && Boolean.TRUE.toString().equalsIgnoreCase(skip)) {

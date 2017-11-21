@@ -104,7 +104,7 @@
         <logger name="org.springframework.context" level="INFO"/>
         <logger name="org.springframework.web" level="INFO"/>
         <logger name="org.apache.http" level="WARN"/>
-        <logger name="org.springframework.aop" level="DEBUG"/>
+        <logger name="org.springframework.aop" level="INFO"/>
 
         <!-- 配置日志的根节点 根节点可以配置级别-->
         <root level="ALL">

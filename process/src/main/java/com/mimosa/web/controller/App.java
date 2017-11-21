@@ -20,7 +20,6 @@ public class App extends BaseController {
     @Autowired
     private DrugService drugService;
 
-
     @RequestMapping("/hi")
     public Object hello(HttpServletRequest request, HttpServletResponse response, @RequestParam(name = "id") Integer id) {
         return  drugService.findById(id);

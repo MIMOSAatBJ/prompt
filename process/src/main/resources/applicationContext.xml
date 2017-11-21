@@ -13,8 +13,8 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-    <context:property-placeholder location="classpath*:${project.env:dev}/config.properties"/>
-    <context:component-scan base-package="com.mimosa.*"/>
+    <context:property-placeholder location="classpath:${project.env:dev}/config.properties" order="1" local-override="true" ignore-unresolvable="true"/>
+    <context:component-scan base-package="com.mimosa.web,com.mimosa.common"/>
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close">
@@ -73,4 +73,9 @@
         <aop:pointcut id="transactionPointcut" expression="execution(* com.mimosa.common.service.impl..*(..))"/>
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice"/>
     </aop:config>
+
+    <import resource="classpath:spring-cache-redis.xml"/>
+    <import resource="classpath:spring-rabbitmq.xml"/>
+    <import resource="classpath:spring-kafka.xml"/>
+    <import resource="classpath:spring-activemq.xml"/>
 </beans>
