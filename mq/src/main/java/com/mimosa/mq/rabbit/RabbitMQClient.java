@@ -27,7 +27,7 @@ public class RabbitMQClient {
     }
 
     /**
-     * 通过此方法获取基础组件调用比较原始的方法
+     * 通过此方法获取基础组件调用比较底层的方法
      *
      * @return
      */
