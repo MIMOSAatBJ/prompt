@@ -1,5 +1,6 @@
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import redis.clients.jedis.JedisCluster;
+import redis.clients.jedis.JedisPool;
 
 /**
  * @describe:
@@ -13,6 +14,7 @@ public class StartUp {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath*:spring*.xml");
         JedisCluster cluster = (JedisCluster)applicationContext.getBean("cluster");
+        JedisPool jedisPool;
         cluster.hkeys("*").stream().forEach(k -> System.out.println(k));
 
     }

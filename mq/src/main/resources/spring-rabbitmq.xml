@@ -10,7 +10,8 @@
         http://www.springframework.org/schema/rabbit
         http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd">
 
-    <context:property-placeholder location="classpath:rabbitmq.properties" order="10" ignore-unresolvable="true" local-override="true"/>
+    <context:property-placeholder location="classpath:rabbitmq.properties" order="10" ignore-unresolvable="true"
+                                  local-override="true"/>
 
     <context:component-scan base-package="com.mimosa.mq.rabbit"/>
 
@@ -23,10 +24,10 @@
 
     <rabbit:admin connection-factory="connectionFactoryAMQP"/>
     <!--声名四种类型的 exchange -->
-    <rabbit:direct-exchange  name="direct"/>
-    <rabbit:fanout-exchange  name="fanout"/>
-    <rabbit:headers-exchange name="headers"/>
-    <rabbit:topic-exchange   name="topic"/>
+    <rabbit:direct-exchange id="directExchange" name="direct"/>
+    <rabbit:fanout-exchange id="fanoutExchange" name="fanout"/>
+    <rabbit:headers-exchange id="headersExchange" name="headers"/>
+    <rabbit:topic-exchange id="topicExchange" name="topic"/>
 
     <rabbit:template id="amqpTemplate" connection-factory="connectionFactoryAMQP"/>
 

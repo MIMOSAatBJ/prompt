@@ -11,6 +11,7 @@
         <module>../common</module>
         <module>../cache</module>
         <module>../mq</module>
+        <module>../zookeeper</module>
     </modules>
 
     <name>basic</name>
