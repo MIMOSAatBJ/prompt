@@ -7,15 +7,27 @@
         <relativePath>../basic/pom.xml</relativePath>
     </parent>
 
+
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>zookeeper</artifactId>
+    <artifactId>schedule</artifactId>
     <packaging>jar</packaging>
+    <name>schedule</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>3.4.10</version>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz-jobs</artifactId>
+            <version>2.2.1</version>
         </dependency>
     </dependencies>
 </project>
