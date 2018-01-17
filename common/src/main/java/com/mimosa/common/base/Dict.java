@@ -8,7 +8,7 @@ public interface Dict {
     enum Environment {
         dev,
         test,
-        prod;
+        prod
     }
 
     enum Header {
