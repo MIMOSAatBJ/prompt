@@ -9,17 +9,18 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context-4.1.xsd
+       http://www.springframework.org/schema/context/spring-context-4.3.xsd
        http://www.springframework.org/schema/mvc
-       http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
-       ">
+       http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
-    <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
+
     <context:component-scan base-package="com.mimosa.web.controller" use-default-filters="false">
         <context:include-filter type="assignable" expression="com.mimosa.common.base.BaseController"/>
     </context:component-scan>
+
     <aop:aspectj-autoproxy/>
+
     <mvc:annotation-driven>
         <mvc:message-converters>
             <bean
@@ -43,6 +44,5 @@
             <bean class="com.mimosa.web.interceptor.AuthInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
-
 
 </beans>

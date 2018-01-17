@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <!--<context:property-placeholder location="classpath:config/config.properties" order="10" ignore-unresolvable="true"-->
+    <!--local-override="true"/>-->
+
+
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig"
+          p:maxTotal="${redis.maxActive}"
+          p:maxIdle="${redis.maxIdle}"
+          p:maxWaitMillis="${redis.maxWait}"
+          p:testOnBorrow="true"
+          p:blockWhenExhausted="false"/>
+
+    <!--<bean id="jedisPool" class="redis.clients.jedis.JedisPool">-->
+    <!--<constructor-arg name="poolConfig" ref="poolConfig"/>-->
+    <!--<constructor-arg name="host" value="${redis_host}"/>-->
+    <!--<constructor-arg name="port" value="${redis_port}"/>-->
+    <!--<constructor-arg name="password" value="${redis_password}"/>-->
+    <!--<constructor-arg name="timeout" value="${redis.timeout}"/>-->
+    <!--</bean>-->
+
+
+    <!--split -->
+    <bean id="keySerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+    <bean id="hashKeySerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+
+    <bean id="valueSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
+    <bean id="hashValueSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
+
+    <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper">
+        <property name="serializationInclusion" value="NON_NULL"/>
+    </bean>
+    <bean id="jsonSerializer" class="org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer">
+        <constructor-arg type="java.lang.Class" value="java.lang.Object"/>
+        <property name="objectMapper" ref="objectMapper"/>
+    </bean>
+
+    <bean id="jedisConnFactory"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          p:poolConfig-ref="poolConfig"
+          p:hostName="${redis_host}"
+          p:port="${redis_port}"
+          p:password="${redis_password}"
+          p:timeout="${redis.timeout}"
+          p:use-pool="true"/>
+
+    <!-- redis template definition -->
+    <bean id="redisTemplate"
+          class="org.springframework.data.redis.core.RedisTemplate"
+          p:connection-factory-ref="jedisConnFactory">
+        <property name="keySerializer" ref="keySerializer"/>
+        <property name="hashKeySerializer" ref="keySerializer"/>
+        <property name="valueSerializer" ref="jsonSerializer"/>
+        <property name="hashValueSerializer" ref="hashValueSerializer"/>
+    </bean>
+
+</beans>

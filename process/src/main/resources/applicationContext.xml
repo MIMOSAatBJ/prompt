@@ -13,7 +13,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-    <context:property-placeholder location="classpath:${project.env:dev}/config.properties" order="1" local-override="true" ignore-unresolvable="true"/>
+    <context:property-placeholder  location="classpath:${project.env:dev}/config.properties" order="1" local-override="true" ignore-unresolvable="true"/>
     <!--添加扫描的基础包-->
     <context:component-scan base-package="com.mimosa.web,com.mimosa.common"/>
 

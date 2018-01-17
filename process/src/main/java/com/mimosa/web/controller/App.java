@@ -5,6 +5,9 @@ import com.mimosa.common.service.DrugService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.Constants;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,4 +27,5 @@ public class App extends BaseController {
     public Object hello(HttpServletRequest request, HttpServletResponse response, @RequestParam(name = "id") Integer id) {
         return  drugService.findById(id);
     }
+
 }

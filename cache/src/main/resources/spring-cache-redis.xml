@@ -11,20 +11,20 @@
     <context:property-placeholder location="classpath:redis.properties" order="10" ignore-unresolvable="true"
                                   local-override="true"/>
 
-    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig"
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig"
           p:maxTotal="${redis.maxActive}"
           p:maxIdle="${redis.maxIdle}"
           p:maxWaitMillis="${redis.maxWait}"
           p:testOnBorrow="true"
           p:blockWhenExhausted="false"/>
-    
-    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
-        <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
-        <constructor-arg name="host" value="${redis.host}"/>
-        <constructor-arg name="port" value="${redis.port}"/>
-        <constructor-arg name="password" value="${redis.password}"/>
-        <constructor-arg name="timeout" value="${redis.timeout}"/>
-    </bean>
+
+    <!--<bean id="jedisPool" class="redis.clients.jedis.JedisPool">-->
+    <!--<constructor-arg name="poolConfig" ref="jedisPoolConfig"/>-->
+    <!--<constructor-arg name="host" value="${redis.host}"/>-->
+    <!--<constructor-arg name="port" value="${redis.port}"/>-->
+    <!--<constructor-arg name="password" value="${redis.password}"/>-->
+    <!--<constructor-arg name="timeout" value="${redis.timeout}"/>-->
+    <!--</bean>-->
     <!--
     <bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool" destroy-method="destroy">
         <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
@@ -49,16 +49,42 @@
         </constructor-arg>
     </bean>
     -->
-    <!--<bean id="cluster" class="redis.clients.jedis.JedisCluster">-->
-    <!--<constructor-arg index="0">-->
-    <!--<set>-->
-    <!--<bean class="redis.clients.jedis.HostAndPort">-->
-    <!--<constructor-arg index="0" value="${redis.instance1.host}"/>-->
-    <!--<constructor-arg index="1" value="${redis.instance1.port}"/>-->
+    <bean id="cluster" class="redis.clients.jedis.JedisCluster">
+        <constructor-arg index="0">
+            <set>
+                <bean class="redis.clients.jedis.HostAndPort">
+                    <constructor-arg index="0" value="${redis.instance1.host}"/>
+                    <constructor-arg index="1" value="${redis.instance1.port}"/>
+                </bean>
+            </set>
+        </constructor-arg>
+        <constructor-arg name="poolConfig" ref="poolConfig"/>
+    </bean>
+
+
+    <!--<bean id="jedisConnFactory"-->
+    <!--class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"-->
+    <!--p:poolConfig-ref="poolConfig"-->
+    <!--p:hostName="${redis_host}"-->
+    <!--p:port="${redis_port}"-->
+    <!--p:password="${redis_password}"-->
+    <!--p:timeout="${redis.timeout}"-->
+    <!--p:use-pool="true"/>-->
+    <!--<bean id="keySerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>-->
+    <!--<bean id="hashKeySerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>-->
+    <!--<bean id="valueSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>-->
+    <!--<bean id="hashValueSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>-->
+    <!--<bean id="redisTemplate"-->
+    <!--class="org.springframework.data.redis.core.RedisTemplate"-->
+    <!--p:connection-factory-ref="jedisConnFactory">-->
+    <!--<property name="keySerializer" ref="keySerializer"/>-->
+    <!--<property name="hashKeySerializer" ref="hashKeySerializer"/>-->
+    <!--<property name="valueSerializer" ref="valueSerializer"/>-->
+    <!--<property name="hashValueSerializer" ref="hashValueSerializer"/>-->
     <!--</bean>-->
-    <!--</set>-->
-    <!--</constructor-arg>-->
-    <!--<constructor-arg name="poolConfig" ref="jedisPoolConfig"/>-->
+
+    <!--<bean id="hashOperations" class="org.springframework.data.redis.core.DefaultHashOperations">-->
+    <!--<constructor-arg name="template" ref="redisTemplate"/>-->
     <!--</bean>-->
 
 

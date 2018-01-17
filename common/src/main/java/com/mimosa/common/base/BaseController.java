@@ -24,7 +24,7 @@ public class BaseController {
      */
     protected Map<String, String> getparmMap(HttpServletRequest request) {
         Enumeration<String> names = request.getParameterNames();
-        Map<String, String> parms = new HashMap<String, String>();
+        Map<String, String> parms = new HashMap<>();
         while (names.hasMoreElements()) {
             String key = names.nextElement();
             String value = request.getParameter(key);
