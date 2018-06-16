@@ -15,6 +15,7 @@
         <module>../db</module>
         <module>../schedule</module>
         <module>../elasticsearch</module>
+        <module>../nio</module>
     </modules>
 
     <name>basic</name>
